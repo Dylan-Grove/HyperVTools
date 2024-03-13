@@ -12,3 +12,4 @@ Copy-VMFile -VMName $VM.Name -SourcePath "C:\syncroinstaller.exe" -DestinationPa
 Invoke-Command -VMName $VM.Name -ScriptBlock {start c:\Temp\syncroinstaller.exe} -Credential $credential
 
 
+#1
