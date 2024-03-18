@@ -1,6 +1,6 @@
 
-$Username = "user"
-$Password = "user" | ConvertTo-SecureString -asPlainText -Force
+$Username = ""
+$Password = "" | ConvertTo-SecureString -asPlainText -Force
 $credential = New-Object System.Management.Automation.PSCredential($username,$password)
 
 $ScriptBlock = {
