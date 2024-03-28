@@ -1,6 +1,6 @@
 
-$Username = "user"
-$Password = "user" | ConvertTo-SecureString -asPlainText -Force
+$Username = ""
+$Password = "" | ConvertTo-SecureString -asPlainText -Force
 $credential = New-Object System.Management.Automation.PSCredential($username,$password)
 
 $ScriptBlock = {
@@ -11,7 +11,7 @@ $ScriptBlock = {
 
 
 #Run against all VMs
-Get-vm | %{Invoke-Command -VMName $_.Name -ScriptBlock $ScriptBlock -Credential $credential}
+Get-vm | ForEach-Object{Invoke-Command -VMName $_.Name -ScriptBlock $ScriptBlock -Credential $credential}
 
 #Run against just VMS with "KDS" in the name (includes the server)
-Get-vm | Where {$Name -like "*KDS*"}| %{Invoke-Command -VMName $_.Name -ScriptBlock $ScriptBlock -Credential $credential}
+Get-vm | Where-Object {$Name -like "*KDS*"}| ForEach-Object{Invoke-Command -VMName $_.Name -ScriptBlock $ScriptBlock -Credential $credential}
