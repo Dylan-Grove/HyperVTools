@@ -98,7 +98,7 @@ Function Write-Log {
  }
 
 
-Function CreateVirtualMachine {
+ Function CreateVirtualMachine {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory=$true)]
@@ -107,12 +107,12 @@ Function CreateVirtualMachine {
  
         [Parameter(Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
-        [ValidateScript({Test-Path $VirtualDisksPath})]
+        [ValidateScript({Test-Path $_})]
         [String]$VirtualDisksPath,
 
         [Parameter(Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
-        [ValidateScript({Test-Path $VirtualDisksPath})]
+        [ValidateScript({Test-Path $_})]
         [String]$GoldImagePath,
 
         [Parameter(Mandatory=$true)]
@@ -125,7 +125,7 @@ Function CreateVirtualMachine {
 
         [Parameter(Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
-        [ValidateScript({Get-VMSwitch -Name $VirtualSwitchName})]
+        [ValidateScript({Get-VMSwitch -Name $_})]
         [String]$VirtualSwitchName
     )
     
