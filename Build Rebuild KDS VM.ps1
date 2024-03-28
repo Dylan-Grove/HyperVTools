@@ -1,14 +1,14 @@
 Import-Module $env:SyncroModule
 $BUILDorREBUILD = "Build"
-$KDSVMName = ""
-$GoldImagePath = ""
-$VirtualDisksPath = ""
+$KDSVMName = "WSKDSDP13PIZZA"
+$GoldImagePath = "D:\Hyper-V\Images\MicrosGoldEnterprise64bitV3.vhdx"
+$VirtualDisksPath = "D:\Hyper-V\Virtual Disks\"
 
 $Computername  = hostname
 $SiteNumber    = [int]$Computername.ToUpper().split('P').split('H')[1]
 $Timezone      = (Get-TimeZone).Id
-$Username      = ""
-$Password      = "" | ConvertTo-SecureString -asPlainText -Force
+$Username      = "user"
+$Password      = "user" | ConvertTo-SecureString -asPlainText -Force
 $credential    = New-Object System.Management.Automation.PSCredential($username,$password)
 $Name          = $KDSVMName #(Get-VM $KDSVMName).name
 $VirtualSwitch = [STRING](Get-VMNetworkAdapter -VM (Get-VM | select -first 1)).SwitchName
@@ -238,12 +238,11 @@ Sleep 60
 $subnetfull = "10."+$BrandIP+"."+ $siteIP + "."
 $Index = $KDSNames.IndexOf($Name)
 $IP = $subnetfull+($Index+101)
-If($siteIP -eq 0){ $DG = $subnetfull+"62"}
-Else{$DG = $subnetfull+"126"}
+$DefaultGateway = $subnetfull+"126"
 $DNS1 = $subnetfull+"126"
 $DNS2 = "1.1.1.1"
 
-ConfigureVirtualMachine -Name $name -IP $subnetfull
+ConfigureVirtualMachine -Name $name -IP $IP
 
 # Wait for Syncros Install
 Sleep 40
