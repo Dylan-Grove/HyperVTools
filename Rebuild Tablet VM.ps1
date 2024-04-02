@@ -1,7 +1,7 @@
-#Shutsdown, deletes, and then rebuilds a RES3700 workstation. Configures the workstation, reboots, then runs CAL.
-#Requires the image file to be store in D:\Images\Micros
-#Enter the WorkstationRange as 12,23,43 (Only Tablets 12, 23 and 43 will be done).
-#Once the script is done, the workstation will be on the desktop and ready to change the resolution to 1024x768 and then run CAL.
+# Shutsdown, deletes, and then rebuilds a RES3700 workstation. Configures the workstation, reboots, then runs CAL.
+# Requires the image file to be store in D:\Images\Micros
+# Enter the WorkstationRange as 12,23,43 (Only Tablets 12, 23 and 43 will be done).
+# Once the script is done, the workstation will be on the desktop and ready to change the resolution to 1024x768 and then run CAL.
 
 
 Import-Module $env:SyncroModule
